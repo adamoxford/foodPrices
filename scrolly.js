@@ -1,20 +1,17 @@
 // A simple scrollytelling implementation using SVG images
 
-// Define the list of SVG files that correspond to the steps
-// Make sure these filenames match your SVGs
 const chartImages = [
     'chart_state_1.svg', // Corresponds to data-step="0"
     'chart_state_2.svg'  // Corresponds to data-step="1"
 ];
 
-// Get the <img> element
+// Get the <object> element
 const visElement = document.getElementById('vis');
-let currentStep = -1; // Keep track of the current step
+let currentStep = -1;
 
-// This function is now very simple: it just changes the image source
 function updateChart(stepIndex) {
     if (stepIndex === currentStep) {
-        return; // Don't re-load the same image
+        return;
     }
     
     currentStep = stepIndex;
@@ -25,9 +22,9 @@ function updateChart(stepIndex) {
         return;
     }
 
-    // This is the only line that matters:
-    // Change the 'src' attribute of the <img> tag
-    visElement.src = newImageFile;
+    // This is the only line that changes:
+    // Change the 'data' attribute of the <object> tag
+    visElement.data = newImageFile;
 }
 
 // Set up the Intersection Observer (this logic is identical)
@@ -35,7 +32,7 @@ function setupObserver() {
     const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5 // Trigger when 50% of the element is in view
+        threshold: 0.5 
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -53,8 +50,4 @@ function setupObserver() {
     });
 }
 
-// Start the observer
 setupObserver();
-
-// Note: We don't need the initial updateChart(0) call anymore
-// because the HTML <img src="..."> already loads the first chart.
