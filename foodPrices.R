@@ -9,14 +9,14 @@
 #if(!require(jsonlite)) install.packages("jsonlite")
 
 # --- 2. Load Libraries ---
-library(tidyverse)
-library(lubridate)
-library(jsonlite)
-library(vegawidget) 
+#library(tidyverse)
+#library(lubridate)
+#library(jsonlite)
+#library(vegawidget) 
 
 # --- 3. Configuration ---
 input_file <- "newCPIdata.csv"
-output_file <- "chart_state_2.json"
+output_file <- "chart_state_5.json"
 
 # --- 4. Load and Process Data ---
 # Load the raw data
@@ -40,12 +40,12 @@ df_clean <- df_raw %>%
 # --- 5. Define Chart Elements ---
 # Define the color mapping
 all_indicators <- unique(df_clean$Description)
-green_indicators <- c("Meat", "Oils and fats")
+green_indicators <- c("Cereal products", "Oils and fats")
 
 color_domain <- all_indicators
 color_range <- ifelse(
   all_indicators %in% green_indicators,
-  ifelse(all_indicators == "Meat", "#006400", "#990091"), # Dark greens
+  ifelse(all_indicators == "Cereal products", "#006400", "#990091"), # Dark greens
   "lightgrey"                                                  # Grey for all others
 )
 
@@ -64,7 +64,7 @@ df_labels <- df_clean %>%
 
 # --- NEW: Pre-calculate the dot positions (Dec 2021) ---
 df_dots <- df_clean %>%
-  filter(Date == "2021-12-01") # Filter for Dec 2021
+  filter(Date == "2024-12-01") # Filter for Dec 2021
 
 
 # --- 6. Build the Vega-Lite Specification (as an R List) ---
@@ -112,7 +112,7 @@ layer_labels <- list(
     align = "left",
     dx = 5,
     fontSize = 14,
-    dy = list(expr = "datum.Description == 'Oils and fats' ? -25 : 25")
+    dy = list(expr = "datum.Description == 'Cereal products' ? -30 : 25")
   ),
   encoding = list(
     # Find the last point in the full dataset
@@ -130,7 +130,7 @@ layer_labels <- list(
   ),
   # Filter this layer to ONLY show the green labels
   transform = list(
-    list(filter = "datum.Description == 'Meat' || datum.Description == 'Oils and fats'")
+    list(filter = "datum.Description == 'Oils and fats' || datum.Description == 'Cereal products'")
   )
 )
 

@@ -3,7 +3,9 @@
 // Define the list of chart JSON files that correspond to the steps
 const chartSpecs = [
     'chart_state_1.json', // Corresponds to data-step="0"
-    'chart_state_2.json'  // Corresponds to data-step="1"
+    'chart_state_2.json',  // Corresponds to data-step="1"
+    'chart_state_3.json',
+    'chart_state_4.json
 ];
 
 const visElement = document.getElementById('vis');

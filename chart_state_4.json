@@ -3136,7 +3136,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["All Items", "Food", "Cereal products", "Meat", "Fish and other seafood", "Milk, other dairy products and eggs", "Oils and fats", "Fruits and nuts", "Vegetables"],
-            "range": ["lightgrey", "lightgrey", "lightgrey", "#006400", "lightgrey", "lightgrey", "#990091", "lightgrey", "lightgrey"]
+            "range": ["lightgrey", "lightgrey", "#006400", "lightgrey", "lightgrey", "lightgrey", "lightgrey", "lightgrey", "#990091"]
           },
           "legend": false
         },
@@ -6258,7 +6258,7 @@
         "dx": 5,
         "fontSize": 14,
         "dy": {
-          "expr": "datum.Description == 'Oils and fats' ? -30 : 25"
+          "expr": "datum.Description == 'Oils and fats' ? -25 : 25"
         }
       },
       "encoding": {
@@ -6279,7 +6279,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["All Items", "Food", "Cereal products", "Meat", "Fish and other seafood", "Milk, other dairy products and eggs", "Oils and fats", "Fruits and nuts", "Vegetables"],
-            "range": ["lightgrey", "lightgrey", "lightgrey", "#006400", "lightgrey", "lightgrey", "#990091", "lightgrey", "lightgrey"]
+            "range": ["lightgrey", "lightgrey", "#006400", "lightgrey", "lightgrey", "lightgrey", "lightgrey", "lightgrey", "#990091"]
           },
           "legend": "null"
         },
@@ -6290,7 +6290,7 @@
       },
       "transform": [
         {
-          "filter": "datum.Description == 'Meat' || datum.Description == 'Oils and fats'"
+          "filter": "datum.Description == 'Cereal products' || datum.Description == 'Vegetables'"
         }
       ]
     },
@@ -6299,66 +6299,66 @@
         "values": [
           {
             "Description": "All Items",
-            "Date_str": "12/2021",
-            "Value_str": "5.90%",
-            "Value": 0.059,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "7.07%",
+            "Value": 0.0707,
+            "Date": "2023-03-01"
           },
           {
             "Description": "Food",
-            "Date_str": "12/2021",
-            "Value_str": "5.93%",
-            "Value": 0.0593,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "14.34%",
+            "Value": 0.1434,
+            "Date": "2023-03-01"
           },
           {
             "Description": "Cereal products",
-            "Date_str": "12/2021",
-            "Value_str": "1.78%",
-            "Value": 0.0178,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "20.31%",
+            "Value": 0.2031,
+            "Date": "2023-03-01"
           },
           {
             "Description": "Meat",
-            "Date_str": "12/2021",
-            "Value_str": "8.63%",
-            "Value": 0.0863,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "10.58%",
+            "Value": 0.1058,
+            "Date": "2023-03-01"
           },
           {
             "Description": "Fish and other seafood",
-            "Date_str": "12/2021",
-            "Value_str": "3.71%",
-            "Value": 0.0371,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "10.74%",
+            "Value": 0.1074,
+            "Date": "2023-03-01"
           },
           {
             "Description": "Milk, other dairy products and eggs",
-            "Date_str": "12/2021",
-            "Value_str": "5.28%",
-            "Value": 0.0528,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "13.60%",
+            "Value": 0.136,
+            "Date": "2023-03-01"
           },
           {
             "Description": "Oils and fats",
-            "Date_str": "12/2021",
-            "Value_str": "20.77%",
-            "Value": 0.2077,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "15.93%",
+            "Value": 0.1593,
+            "Date": "2023-03-01"
           },
           {
             "Description": "Fruits and nuts",
-            "Date_str": "12/2021",
-            "Value_str": "-1.18%",
-            "Value": -0.0118,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "5.28%",
+            "Value": 0.0528,
+            "Date": "2023-03-01"
           },
           {
             "Description": "Vegetables",
-            "Date_str": "12/2021",
-            "Value_str": "3.15%",
-            "Value": 0.0315,
-            "Date": "2021-12-01"
+            "Date_str": "03/2023",
+            "Value_str": "20.49%",
+            "Value": 0.2049,
+            "Date": "2023-03-01"
           }
         ]
       },
@@ -6383,7 +6383,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["All Items", "Food", "Cereal products", "Meat", "Fish and other seafood", "Milk, other dairy products and eggs", "Oils and fats", "Fruits and nuts", "Vegetables"],
-            "range": ["lightgrey", "lightgrey", "lightgrey", "#006400", "lightgrey", "lightgrey", "#990091", "lightgrey", "lightgrey"]
+            "range": ["lightgrey", "lightgrey", "#006400", "lightgrey", "lightgrey", "lightgrey", "lightgrey", "lightgrey", "#990091"]
           },
           "legend": false
         },
