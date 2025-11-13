@@ -55,34 +55,26 @@ end_date <- "2025-11-01" # As a string
 
 # --- 6. Build the Vega-Lite Specification (as an R List) ---
 
-vl_spec <- list(
-  `$schema` = "https://vega.github.io/schema/vega-lite/v5.json",
-  description = "South Africa Monthly CPI Inflation",
-  
-  # Set web-specific properties
-  width = "container",
-  height = "container",
-  background = "white",
-  title = list(text = "Monthly CPI Inflation Timeline"),
-  view = list(stroke = NULL), # Remove chart border
-  
-  # Embed the data
+# This time, we build each layer as a complete object
+# to avoid ambiguity in the R previewer.
+
+# Layer 1: The lines
+layer_lines <- list(
   data = list(values = df_clean),
-  
-  # Define the shared encodings for all layers
+  mark = list(type = "line", point = FALSE), # No points
   encoding = list(
     x = list(
       field = "Date", 
       type = "temporal", 
       title = "Date",
       axis = list(format = "%Y-%m", grid = FALSE), # No vertical gridlines
-      scale = list(domain = list(min_date, end_date)) # Set x-axis limit
+      scale = list(domain = list(min_date, end_date)) 
     ),
     y = list(
       field = "Value", 
       type = "quantitative", 
       title = "Year-on-Year Inflation",
-      axis = list(format = ".1%") # Y-axis gridlines are on by default
+      axis = list(format = ".1%")
     ),
     color = list(
       field = "Description",
@@ -95,40 +87,53 @@ vl_spec <- list(
       list(field = "Date", type = "temporal", title = "Date", format = "%B %Y"),
       list(field = "Value", type = "quantitative", title = "Inflation", format = ".1%")
     )
+  )
+)
+
+# Layer 2: The labels
+layer_labels <- list(
+  data = list(values = df_clean),
+  mark = list(
+    type = "text",
+    align = "left",
+    dx = 5,
+    fontSize = 11,
+    dy = list(expr = "datum.Description == 'All Items' ? -8 : 8")
   ),
-  
-  # Define the chart layers
-  layer = list(
-    
-    # Layer 1: The lines
-    list(
-      mark = list(type = "line", point = FALSE) # No points
+  encoding = list(
+    # Find the last point in the full dataset
+    x = list(field = "Date", type = "temporal", aggregate = "max"), 
+    y = list(field = "Value", type = "quantitative", aggregate = list(argmax = "Date")),
+    # Color the text to match the lines
+    color = list(
+      field = "Description",
+      type = "nominal",
+      scale = list(domain = color_domain, range = color_range),
+      legend = NULL
     ),
-    
-    # Layer 2: The labels
-    list(
-      # Mark properties for the text
-      mark = list(
-        type = "text",
-        align = "left",
-        dx = 5,
-        fontSize = 11,
-        # Use a Vega expression to nudge labels apart
-        dy = list(expr = "datum.Description == 'All Items' ? -8 : 8")
-      ),
-      
-      # Layer-specific encodings to find the last point
-      encoding = list(
-        x = list(field = "Date", type = "temporal", aggregate = "max"),
-        y = list(field = "Value", type = "quantitative", aggregate = list(argmax = "Date")),
-        text = list(field = "Description", type = "nominal")
-      ),
-      
-      # Layer-specific filter to only label the green lines
-      transform = list(
-        list(filter = "datum.Description == 'All Items' || datum.Description == 'Food'")
-      )
-    )
+    # Set the text content
+    text = list(field = "Description", type = "nominal")
+  ),
+  # Filter this layer to ONLY show the green labels
+  transform = list(
+    list(filter = "datum.Description == 'All Items' || datum.Description == 'Food'")
+  )
+)
+
+# Combine the layers into the final specification
+vl_spec <- list(
+  `$schema` = "https://vega.github.io/schema/vega-lite/v5.json",
+  description = "South Africa Monthly CPI Inflation",
+  width = "container",
+  height = "container",
+  background = "white",
+  title = list(text = "Monthly CPI Inflation Timeline"),
+  view = list(stroke = NULL),
+  
+  # Add the two layers
+  layer = list(
+    layer_lines,
+    layer_labels
   )
 )
 
