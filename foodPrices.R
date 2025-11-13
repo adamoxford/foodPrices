@@ -16,7 +16,7 @@ library(vegawidget)
 
 # --- 3. Configuration ---
 input_file <- "newCPIdata.csv"
-output_file <- "chart_state_3.json"
+output_file <- "chart_state_2.json"
 
 # --- 4. Load and Process Data ---
 # Load the raw data
@@ -64,7 +64,7 @@ df_labels <- df_clean %>%
 
 # --- NEW: Pre-calculate the dot positions (Dec 2021) ---
 df_dots <- df_clean %>%
-  filter(Date == "2022-04-01") # Filter for Dec 2021
+  filter(Date == "2021-12-01") # Filter for Dec 2021
 
 
 # --- 6. Build the Vega-Lite Specification (as an R List) ---
@@ -169,7 +169,8 @@ vl_spec <- list(
   # Add the two layers
   layer = list(
     layer_lines,
-    layer_labels
+    layer_labels,
+    layer_dots
   )
 )
 

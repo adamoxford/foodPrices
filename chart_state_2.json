@@ -6293,6 +6293,119 @@
           "filter": "datum.Description == 'Meat' || datum.Description == 'Oils and fats'"
         }
       ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Description": "All Items",
+            "Date_str": "12/2021",
+            "Value_str": "5.90%",
+            "Value": 0.059,
+            "Date": "2021-12-01"
+          },
+          {
+            "Description": "Food",
+            "Date_str": "12/2021",
+            "Value_str": "5.93%",
+            "Value": 0.0593,
+            "Date": "2021-12-01"
+          },
+          {
+            "Description": "Cereal products",
+            "Date_str": "12/2021",
+            "Value_str": "1.78%",
+            "Value": 0.0178,
+            "Date": "2021-12-01"
+          },
+          {
+            "Description": "Meat",
+            "Date_str": "12/2021",
+            "Value_str": "8.63%",
+            "Value": 0.0863,
+            "Date": "2021-12-01"
+          },
+          {
+            "Description": "Fish and other seafood",
+            "Date_str": "12/2021",
+            "Value_str": "3.71%",
+            "Value": 0.0371,
+            "Date": "2021-12-01"
+          },
+          {
+            "Description": "Milk, other dairy products and eggs",
+            "Date_str": "12/2021",
+            "Value_str": "5.28%",
+            "Value": 0.0528,
+            "Date": "2021-12-01"
+          },
+          {
+            "Description": "Oils and fats",
+            "Date_str": "12/2021",
+            "Value_str": "20.77%",
+            "Value": 0.2077,
+            "Date": "2021-12-01"
+          },
+          {
+            "Description": "Fruits and nuts",
+            "Date_str": "12/2021",
+            "Value_str": "-1.18%",
+            "Value": -0.0118,
+            "Date": "2021-12-01"
+          },
+          {
+            "Description": "Vegetables",
+            "Date_str": "12/2021",
+            "Value_str": "3.15%",
+            "Value": 0.0315,
+            "Date": "2021-12-01"
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "size": 100,
+        "filled": true,
+        "stroke": "black",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Description",
+          "type": "nominal",
+          "scale": {
+            "domain": ["All Items", "Food", "Cereal products", "Meat", "Fish and other seafood", "Milk, other dairy products and eggs", "Oils and fats", "Fruits and nuts", "Vegetables"],
+            "range": ["lightgrey", "lightgrey", "lightgrey", "#006400", "lightgrey", "lightgrey", "#990091", "lightgrey", "lightgrey"]
+          },
+          "legend": false
+        },
+        "tooltip": [
+          {
+            "field": "Description",
+            "type": "nominal"
+          },
+          {
+            "field": "Date",
+            "type": "temporal",
+            "title": "Date",
+            "format": "%B %Y"
+          },
+          {
+            "field": "Value",
+            "type": "quantitative",
+            "title": "Inflation",
+            "format": ".1%"
+          }
+        ]
+      }
     }
   ]
 }
