@@ -46,7 +46,7 @@ async function updateChart(stepIndex) {
 function setupObserver() {
     const options = {
         root: null, // use the viewport
-        rootMargin: '-25% 0px -75% 0px',
+        rootMargin: '-75% 0px -25% 0px',
         threshold: 0 // Trigger as soon as that line is crossed
     };
 
