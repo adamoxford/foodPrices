@@ -46,8 +46,8 @@ async function updateChart(stepIndex) {
 function setupObserver() {
     const options = {
         root: null, // use the viewport
-        rootMargin: '0px',
-        threshold: 0.5 // Trigger when 50% of the element is in view
+        rootMargin: '-25% 0px -75% 0px',
+        threshold: 0 // Trigger as soon as that line is crossed
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
