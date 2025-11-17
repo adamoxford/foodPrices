@@ -3134,9 +3134,7 @@
           "axis": {
             "format": ".1%",
             "titleFontSize": "14",
-            "labelFontSize": "12",
-            "domainOpacity": "0"
-          }
+            "labelFontSize": "12"          }
         },
         "color": {
           "field": "Description",
