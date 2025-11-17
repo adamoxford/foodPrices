@@ -3,6 +3,7 @@
   "description": "South Africa Monthly CPI Inflation",
   "width": "container",
   "height": "container",
+  "background":"null",
   "title": {
     "text": "Monthly CPI Inflation Timeline",
     "fontSize": "18"
