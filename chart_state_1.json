@@ -3136,7 +3136,6 @@
             "format": ".1%",
             "titleFontSize": "14",
             "labelFontSize": "12",
-            "domain": "false"
           }
         },
         "color": {
