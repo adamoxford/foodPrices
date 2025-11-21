@@ -2,7 +2,7 @@
 
 // Define the list of chart JSON files that correspond to the steps
 const chartSpecs = [
-    'chart_food_basket_minimal.json',
+    'basket.svg',
     'chart_food_basket.json',
     'chart_state_1.json', // Corresponds to data-step="0"
     'chart_state_2.json',  // Corresponds to data-step="1"
@@ -15,7 +15,7 @@ const chartSpecs = [
 const visElement = document.getElementById('vis');
 let currentStep = -1; // Keep track of the current step
 
-async function updateChart(stepIndex) {
+/* async function updateChart(stepIndex) {
     // Only update if the step has changed
     if (stepIndex === currentStep) {
         return;
@@ -42,6 +42,32 @@ async function updateChart(stepIndex) {
         
     } catch (error) {
         console.error('Error updating chart:', error);
+    }
+} */
+
+async function updateChart(stepIndex) {
+    if (stepIndex === currentStep) return;
+    currentStep = stepIndex;
+    
+    const specFile = chartSpecs[stepIndex];
+    const visElement = document.getElementById('vis');
+    const imgElement = document.getElementById('static-img');
+
+    // Check file extension
+    if (specFile.endsWith('.json')) {
+        // It's a chart: Show div, hide image
+        imgElement.style.display = 'none';
+        visElement.style.display = 'block';
+        
+        const response = await fetch(specFile);
+        const spec = await response.json();
+        await vegaEmbed(visElement, spec, { actions: false });
+        
+    } else {
+        // It's an image: Hide div, show image
+        visElement.style.display = 'none';
+        imgElement.style.display = 'block';
+        imgElement.src = specFile;
     }
 }
 
